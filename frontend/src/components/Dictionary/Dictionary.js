@@ -18,11 +18,12 @@ const accessKey = process.env.API_KEY_COLLINS_DICTIONARY;
 const dict = new Collins(serverName, accessKey);
 
 // search
-dict.search("dog", "english-italian", function(err, data) {
-    console.log(data);
-})
-
-
-export async function Dictionary() {
-
+const Dictionary = () => {
+    return(
+        dict.search("dog", "english-italian", function(err, data) {
+            console.log(data);
+        })
+    )
 }
+
+export default Dictionary; 

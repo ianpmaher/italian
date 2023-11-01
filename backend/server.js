@@ -1,6 +1,9 @@
+// require('dotenv').config();
 const express = require('express');
 const router = require('./Controllers/router.js');
 const app = express();
+// ======================================== //
+const cors = require('cors');
 
 // ======================================== //
 // MIDDLEWARE //
