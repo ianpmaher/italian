@@ -1,9 +1,11 @@
 const express = require('express');
 const router = require('./Controllers/router.js');
-const app= express();
+const app = express();
 
 // ======================================== //
 // MIDDLEWARE //
+app.use(express.urlencoded({extended: true}))
+app.use(express.json());
 app.use(router);
 
 app.listen(4001, async () => {
