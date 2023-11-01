@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import Display from "../../components/Display/Display";
+import Quiz from "../../components/Quiz/Quiz";
 
 // const baseUrl = 'https://api.collinsdictionary.com/api/v1/dictionaries/';
 // const serverName = "api.collinsdictionary.com";
@@ -36,6 +37,8 @@ const EnglishToItalian = (props) => {
     return (
         <div>
             <h1>EnglishToItalian</h1>
+            {/* entry search */}
+            <Quiz />
             <input type="text" onChange={(e) => setWord(e.target.value)} />
             <button onClick={fetchWord}>Search</button>
             <Display content={entry} />
