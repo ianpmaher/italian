@@ -4,6 +4,11 @@ import styled from "styled-components";
 import Display from "../../components/Display/Display";
 import Quiz from "../../components/Quiz/Quiz";
 
+const PageContainer = styled.div`
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+`
 // const baseUrl = 'https://api.collinsdictionary.com/api/v1/dictionaries/';
 // const serverName = "api.collinsdictionary.com";
 // const accessKey = process.env.API_KEY_COLLINS_DICTIONARY;
@@ -35,14 +40,14 @@ const EnglishToItalian = (props) => {
     }
 
     return (
-        <div>
+        <PageContainer>
             <h1>EnglishToItalian</h1>
             {/* entry search */}
             <Quiz />
             <input type="text" onChange={(e) => setWord(e.target.value)} />
             <button onClick={fetchWord}>Search</button>
             <Display content={entry} />
-        </div>
+        </PageContainer>
     );
 }
 

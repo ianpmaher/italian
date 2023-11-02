@@ -1,6 +1,8 @@
 import axios from "axios"
 import styled from "styled-components"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import arrWords from "./words"
+import QuizDisplay from "../QuizDisplay/QuizDisplay"
 
 const QuizContainer = styled.div`
     display: flex;
@@ -9,30 +11,32 @@ const QuizContainer = styled.div`
     align-items: center;
 `
 
-const wordUrl = "https://raw.githubusercontent.com/dwyl/english-words/master/words_dictionary.json"
-
 const Quiz = (props) => {
 
-    const randomNum = Math.floor(Math.random() * 10000)
-    const [ word, setWord ] = useState("")
-    
-    const getWord = async () => {
-        axios.get(wordUrl)
-            .then(res => {
-                console.log(res.data)
-                setWord(res.data[randomNum])
-                // setWord(arrayData[randomNum])
-            })
-            .catch(err => {
-                console.log(err)
-            })
+    const [ word, setWord ] = useState('')
+    const [ display, setDisplay ] = useState(false)
+
+    const getWord = () => {
+        const randomNum = Math.floor(Math.random() * arrWords.length)
+        const randomWord = arrWords[randomNum]
+        console.log(randomWord)
+        setWord(randomWord)
+        console.log(word)
     }
+
+    useEffect(() => {
+        if (word) {
+            setDisplay(true)
+        }
+    }, [word])
+    
 
     return (
         <QuizContainer>
             <h1>Quiz</h1>
             <button onClick={getWord}>Get Word</button>
-            <p>{word}</p>
+            {/* {display ? <QuizDisplay word={word} /> : null} */}
+            <QuizDisplay word={word} />
         </QuizContainer>
     )
 }
