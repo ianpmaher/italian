@@ -9,6 +9,7 @@ import Box from "@mui/material/Box";
 import EnglishToItalian from "../../pages/EnglishToItalian/EnglishToItalian";
 import Home from "../../pages/Home/Home";
 import ItalianToEnglish from "../../pages/ItalianToEnglish/ItalianToEnglish";
+import SearchEnglishToItalian from "../SearchEnglishToItalian/SearchEnglishToItalian";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -23,7 +24,7 @@ function TabPanel(props) {
         >
             {value === index && (
                 <Box sx={{ p: 3 }}>
-                    <span>{children}</span>
+                    {children}
                 </Box>
             )}
         </div>
@@ -52,31 +53,35 @@ const Nav = (props) => {
     };
 
     return (
-        <Box sx={{ bgcolor: "background.paper" }}>
-            <AppBar position="static">
-                <Tabs
-                    value={value}
-                    onChange={handleChange}
-                    indicatorColor="secondary"
-                    textColor="inherit"
-                    variant="fullWidth"
-                    aria-label="full width tabs example"
-                >
-                    <Tab label="Home" {...a11yProps(0)} />
-                    <Tab label="English to Italian" {...a11yProps(1)} />
-                    <Tab label="Italian to English" {...a11yProps(2)} />
-                </Tabs>
-            </AppBar>
-            <TabPanel value={value} index={0} >
-                <Home />
-            </TabPanel>
-            <TabPanel value={value} index={1} >
-                <EnglishToItalian />
-            </TabPanel>
-            <TabPanel value={value} index={2} >
-                <ItalianToEnglish />
-            </TabPanel>
-        </Box>
+        <div>
+            <Box sx={{ bgcolor: "background.paper" }}>
+                <AppBar position="static">
+                    <Tabs
+                        value={value}
+                        onChange={handleChange}
+                        indicatorColor="secondary"
+                        textColor="inherit"
+                        variant="fullWidth"
+                        aria-label="full width tabs example"
+                    >
+                        <Tab label="Home" {...a11yProps(0)} />
+                        <Tab label="English to Italian" {...a11yProps(1)} />
+                        <Tab label="Italian to English" {...a11yProps(2)} />
+                    </Tabs>
+                </AppBar>
+                <TabPanel value={value} index={0} >
+                    <Home />
+                </TabPanel>
+                <TabPanel value={value} index={1} >
+                    <SearchEnglishToItalian />
+                    <EnglishToItalian />
+
+                </TabPanel>
+                <TabPanel value={value} index={2} >
+                    <ItalianToEnglish />
+                </TabPanel>
+            </Box>
+        </div>
     );
 };
 

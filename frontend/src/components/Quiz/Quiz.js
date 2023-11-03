@@ -21,7 +21,6 @@ const Quiz = (props) => {
         const randomWord = arrWords[randomNum]
         console.log(randomWord)
         setWord(randomWord)
-        console.log(word)
     }
 
     useEffect(() => {
@@ -30,11 +29,15 @@ const Quiz = (props) => {
         }
     }, [word])
     
+    const handleGetWord = (event) => {
+        event.preventDefault()
+        getWord()
+    }
 
     return (
         <QuizContainer>
             <h1>Quiz</h1>
-            <button onClick={getWord}>Get Word</button>
+            <button onClick={handleGetWord}>Get Word</button>
             {/* {display ? <QuizDisplay word={word} /> : null} */}
             <QuizDisplay word={word} />
         </QuizContainer>

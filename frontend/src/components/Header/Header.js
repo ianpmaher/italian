@@ -7,7 +7,7 @@ const HeaderText = styled.h1`
 const Header = (props) => {
     return (
         <div>
-            <HeaderText>English to Italian</HeaderText>
+            <HeaderText> 🇬🇧🇮🇹 </HeaderText>
             <Nav />
         </div>
     );

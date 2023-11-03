@@ -28,6 +28,8 @@ router.get('/', (req, res) => {
     res.send('Hello World!');
 });
 
+// ======================================== //
+// this code from https://npm.io/package/collins makes EVERYTHING work in Express
 const dict = new Collins(serverName, accessKey);
 
 // SEARCH
@@ -43,11 +45,11 @@ router.get('/:word/', async (req, res) => {
     }
 })
 
-// ENTRY
-
+// ======================================== //
+// ENTRY ENGLISH TO ITALIAN //
 "http://api.collinsdictionary.com/api/v1/dictionaries/english-italian/entries/word_1"
 // I had messed up and forgot that the : makes it a variable, so I was trying to search for the word "word_1" instead of the word that was passed in as a parameter.
-router.get('/english/:entryId', async (req, res) => {
+router.get('/english/entry/:entryId', async (req, res) => {
     try {
         const entryId = req.params.entryId;
         console.log(entryId)
@@ -60,8 +62,8 @@ router.get('/english/:entryId', async (req, res) => {
     }
 
 })
-
-router.get('/italian/:entryId', async (req, res) => {
+// ENTRY ITALIAN TO ENGLISH //
+router.get('/italian/entry/:entryId', async (req, res) => {
     try {
         const entryId = req.params.entryId;
         console.log(entryId)
@@ -76,6 +78,26 @@ router.get('/italian/:entryId', async (req, res) => {
 })
 
 "http://api.collinsdictionary.com/api/v1/dictionaries/english-italian/entries/dog_1"
+
+// ======================================== //
+// SEARCH [first] ROUTE //
+"http://api.collinsdictionary.com/api/v1/dictionaries/english-italian/entries/word_1"
+// I had messed up and forgot that the : makes it a variable, so I was trying to search for the word "word_1" instead of the word that was passed in as a parameter.
+router.get('/english/search/:searchWord', async (req, res) => {
+    try {
+        const searchWord = req.params.searchWord;
+        console.log(searchWord)
+        dict.first("english-italian", searchWord, 'html', function(err, data) {
+            console.log(data);
+            // res.send(data.entryContent)
+            res.send(data.entryContent)
+        })        
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+
+})
+
 
 
 

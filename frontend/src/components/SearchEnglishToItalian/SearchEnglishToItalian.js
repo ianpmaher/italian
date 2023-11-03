@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
-import Display from "../../components/Display/Display";
-import Quiz from "../../components/Quiz/Quiz";
+import Display from "../Display/Display";
+import Quiz from "../Quiz/Quiz";
 
 const PageContainer = styled.div`
     display: flex;
@@ -13,7 +13,7 @@ const PageContainer = styled.div`
 // const serverName = "api.collinsdictionary.com";
 // const accessKey = process.env.API_KEY_COLLINS_DICTIONARY;
 
-const EnglishToItalian = (props) => {
+const SearchEnglishToItalian = (props) => {
     
     // API English to Italian
     const [word, setWord] = useState("");
@@ -28,7 +28,7 @@ const EnglishToItalian = (props) => {
             //         "searchWord": word
             //     }
             // });
-            const response = await axios.get(`http://localhost:4001/english/entry/${word}`, {
+            const response = await axios.get(`http://localhost:4001/english/search/${word}`, {
                 headers: {
                     "Content-Type": "application/json"
                 }            });
@@ -39,21 +39,16 @@ const EnglishToItalian = (props) => {
         }
     }
 
-    const handleFetchWord = (event) => {
-        event.preventDefault();
-        fetchWord();
-    }
-
     return (
         <PageContainer>
-            <h1>EnglishToItalian</h1>
+            <h1>Search EnglishToItalian</h1>
             {/* entry search */}
             <Quiz />
             <input type="text" onChange={(e) => setWord(e.target.value)} />
-            <button onClick={handleFetchWord}>Search</button>
+            <button onClick={fetchWord}>Search</button>
             <Display content={entry} />
         </PageContainer>
     );
 }
 
-export default EnglishToItalian;
+export default SearchEnglishToItalian;

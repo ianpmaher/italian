@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const QuizContainer = styled.div`
+const QuizContainerDisplay = styled.div`
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
@@ -9,15 +9,15 @@ const QuizContainer = styled.div`
 
 const QuizDisplay = (props) => {
     const loaded = () => (
-        <QuizContainer>
+        <QuizContainerDisplay>
             <p>{props.word}</p>
-        </QuizContainer>
+        </QuizContainerDisplay>
     )
     
     const loading = () => (
-        <QuizContainer>
-            <p>Loading...</p>
-        </QuizContainer>
+        <QuizContainerDisplay>
+            <p>Click for a word</p>
+        </QuizContainerDisplay>
     )
 
     return (
