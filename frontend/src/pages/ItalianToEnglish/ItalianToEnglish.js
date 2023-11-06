@@ -2,12 +2,22 @@ import { useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import Display from "../../components/Display/Display";
-import Quiz from "../../components/Quiz/Quiz";
+import InputField from "../../components/InputField/InputField";
+import Button from "../../components/Button/Button";
 
 const PageContainer = styled.div`
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
+    align-items: center;
+`;
+
+const CoolForm = styled.form`
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    min-width: 20rem;
 `;
 
 const ItalianToEnglish = (props) => {
@@ -46,11 +56,10 @@ const ItalianToEnglish = (props) => {
         <PageContainer>
             <h1>ItalianToEnglish</h1>
             {/* entry search */}
-            <Quiz />
-            <form onChange={handleFormChange}>
-                <input type="text" name="entry" onChange={handleFormChange} />
-                <input type="submit" value="Submit" onClick={fetchWord} />
-            </form>
+            <CoolForm onChange={handleFormChange}>
+                <InputField type="text" name="entry" onChange={handleFormChange} />
+                <Button onClick={fetchWord}>Search</Button> 
+            </CoolForm>
             {/* <input type="text" onChange={(e) => setWord(e.target.value)} /> */}
             {/* <button onClick={fetchWord}>Search</button> */}
             <Display content={entry} />

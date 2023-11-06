@@ -2,12 +2,14 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import Display from "../Display/Display";
-import Quiz from "../Quiz/Quiz";
+import InputField from "../InputField/InputField";
+import Button from "../Button/Button";
 
 const PageContainer = styled.div`
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
+    align-items: center;
 `
 // const baseUrl = 'https://api.collinsdictionary.com/api/v1/dictionaries/';
 // const serverName = "api.collinsdictionary.com";
@@ -43,9 +45,8 @@ const SearchEnglishToItalian = (props) => {
         <PageContainer>
             <h1>Search EnglishToItalian</h1>
             {/* entry search */}
-            <Quiz />
-            <input type="text" onChange={(e) => setWord(e.target.value)} />
-            <button onClick={fetchWord}>Search</button>
+            <InputField type="text" onChange={(e) => setWord(e.target.value)} />
+            <Button onClick={fetchWord}>Search</Button>
             <Display content={entry} />
         </PageContainer>
     );

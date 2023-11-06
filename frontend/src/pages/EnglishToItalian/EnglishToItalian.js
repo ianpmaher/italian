@@ -3,12 +3,25 @@ import axios from "axios";
 import styled from "styled-components";
 import Display from "../../components/Display/Display";
 import Quiz from "../../components/Quiz/Quiz";
+import InputField from "../../components/InputField/InputField";
+import Button from "../../components/Button/Button";
+import SearchEnglishToItalian from "../../components/SearchEnglishToItalian/SearchEnglishToItalian";
 
 const PageContainer = styled.div`
     display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+`
+const FlexContainer = styled.div`
+    display: flex;
     flex-flow: column wrap;
     justify-content: center;
+    align-items: center;
+    margin: 0 auto;
 `
+
 // const baseUrl = 'https://api.collinsdictionary.com/api/v1/dictionaries/';
 // const serverName = "api.collinsdictionary.com";
 // const accessKey = process.env.API_KEY_COLLINS_DICTIONARY;
@@ -46,12 +59,17 @@ const EnglishToItalian = (props) => {
 
     return (
         <PageContainer>
-            <h1>EnglishToItalian</h1>
-            {/* entry search */}
-            <Quiz />
-            <input type="text" onChange={(e) => setWord(e.target.value)} />
-            <button onClick={handleFetchWord}>Search</button>
-            <Display content={entry} />
+            <FlexContainer>
+                {/* SEARCH WORD */}
+                <SearchEnglishToItalian />
+            </FlexContainer>
+            <FlexContainer>
+                {/* SEARCH ENTRY */}
+                <h1>Entry: EnglishToItalian</h1>
+                <InputField type="text" onChange={(e) => setWord(e.target.value)} />
+                <Button onClick={handleFetchWord}>Search</Button>
+                <Display content={entry} />
+            </FlexContainer>
         </PageContainer>
     );
 }
