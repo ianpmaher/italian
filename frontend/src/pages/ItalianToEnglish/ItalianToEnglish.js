@@ -66,7 +66,7 @@ const ItalianToEnglish = (props) => {
                 <SearchItalianToEnglish />
             </FlexContainer>
             <FlexContainer>
-                <h1>Italian to English</h1>
+                <h1>Entry: Italian to English</h1>
                 {/* entry search */}
                 <CoolForm onChange={handleFormChange}>
                     <InputField type="text" name="entry" onChange={handleFormChange} />
