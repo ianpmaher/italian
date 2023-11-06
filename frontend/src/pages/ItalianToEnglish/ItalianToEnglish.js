@@ -11,7 +11,7 @@ const PageContainer = styled.div`
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
-    gap: 5rem;
+    gap: 3rem;
 `
 const FlexContainer = styled.div`
     display: flex;

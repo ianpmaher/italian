@@ -5,6 +5,8 @@ const QuizContainerDisplay = styled.div`
     flex-flow: column wrap;
     justify-content: center;
     align-items: center;
+    font-size: 1.25em;
+    font-family: "Courier", monospace;
 `
 
 const QuizDisplay = (props) => {
