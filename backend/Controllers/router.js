@@ -32,13 +32,26 @@ router.get('/', (req, res) => {
 // this code from https://npm.io/package/collins makes EVERYTHING work in Express
 const dict = new Collins(serverName, accessKey);
 
-// SEARCH
-router.get('/:word/', async (req, res) => {
+// SEARCH ENGLISH TO ITALIAN //
+router.get('/english/search/:word/', async (req, res) => {
     try {
         const word = req.params.word;
-        dict.search("english-italian", word, function(err, data) {
-            console.log(data);
-            res.send(data)
+        dict.first("english-italian", word, function(err, data) {
+            console.log("first result", data);
+            res.send(data.entryContent)
+        })        
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+})
+
+// SEARCH ITALIAN TO ENGLISH //
+router.get('/italian/search/:word/', async (req, res) => {
+    try {
+        const word = req.params.word;
+        dict.first("italian-english", word, function(err, data) {
+            console.log("first result", data);
+            res.send(data.entryLabel)
         })        
     } catch (error) {
         res.status(500).json({ message: error.message })

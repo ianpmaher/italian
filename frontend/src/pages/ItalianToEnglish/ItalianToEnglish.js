@@ -4,14 +4,22 @@ import styled from "styled-components";
 import Display from "../../components/Display/Display";
 import InputField from "../../components/InputField/InputField";
 import Button from "../../components/Button/Button";
+import SearchItalianToEnglish from "../../components/SearchItalianToEnglish/SearchItalianToEnglish";
 
 const PageContainer = styled.div`
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+`
+const FlexContainer = styled.div`
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
     align-items: center;
-`;
-
+    margin: 0 auto;
+`
 const CoolForm = styled.form`
     display: flex;
     flex-flow: column wrap;
@@ -54,15 +62,20 @@ const ItalianToEnglish = (props) => {
 
     return (
         <PageContainer>
-            <h1>ItalianToEnglish</h1>
-            {/* entry search */}
-            <CoolForm onChange={handleFormChange}>
-                <InputField type="text" name="entry" onChange={handleFormChange} />
-                <Button onClick={fetchWord}>Search</Button> 
-            </CoolForm>
-            {/* <input type="text" onChange={(e) => setWord(e.target.value)} /> */}
-            {/* <button onClick={fetchWord}>Search</button> */}
-            <Display content={entry} />
+            <FlexContainer>
+                <SearchItalianToEnglish />
+            </FlexContainer>
+            <FlexContainer>
+                <h1>Italian to English</h1>
+                {/* entry search */}
+                <CoolForm onChange={handleFormChange}>
+                    <InputField type="text" name="entry" onChange={handleFormChange} />
+                    <Button onClick={fetchWord}>Search</Button> 
+                </CoolForm>
+                {/* <input type="text" onChange={(e) => setWord(e.target.value)} /> */}
+                {/* <button onClick={fetchWord}>Search</button> */}
+                <Display content={entry} />
+            </FlexContainer>
         </PageContainer>
     );
 };

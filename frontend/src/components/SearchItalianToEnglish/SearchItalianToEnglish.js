@@ -1,26 +1,16 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
-import Display from "../../components/Display/Display";
-import InputField from "../../components/InputField/InputField";
-import Button from "../../components/Button/Button";
-import SearchEnglishToItalian from "../../components/SearchEnglishToItalian/SearchEnglishToItalian";
+import Display from "../Display/Display";
+import InputField from "../InputField/InputField";
+import Button from "../Button/Button";
 
 const PageContainer = styled.div`
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 5rem;
-`
-const FlexContainer = styled.div`
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
 `
-
 const CoolForm = styled.form`
     display: flex;
     flex-flow: column wrap;
@@ -33,7 +23,7 @@ const CoolForm = styled.form`
 // const serverName = "api.collinsdictionary.com";
 // const accessKey = process.env.API_KEY_COLLINS_DICTIONARY;
 
-const EnglishToItalian = (props) => {
+const SearchItalianToEnglish = (props) => {
     
     // API English to Italian
     const [word, setWord] = useState("");
@@ -49,7 +39,7 @@ const EnglishToItalian = (props) => {
             //         "searchWord": word
             //     }
             // });
-            const response = await axios.get(`http://localhost:4001/english/entry/${word}`, {
+            const response = await axios.get(`http://localhost:4001/italian/search/${word}`, {
                 headers: {
                     "Content-Type": "application/json"
                 }            });
@@ -60,28 +50,22 @@ const EnglishToItalian = (props) => {
         }
     }
 
-    const handleFormChange = (e) => {
-        setEntry(e.target.value);
-        setWord(e.target.value);
+    const handleFormChange = (event) => {
+        setEntry(event.target.value);
+        setWord(event.target.value);
     }
 
     return (
         <PageContainer>
-            <FlexContainer>
-                {/* SEARCH WORD */}
-                <SearchEnglishToItalian />
-            </FlexContainer>
-            <FlexContainer>
-                {/* SEARCH ENTRY */}
-                <h1>Entry: EnglishToItalian</h1>
-                <CoolForm onChange={handleFormChange}>
-                    <InputField type="text" name="entry" onChange={(e) => setEntry(e.target.value)} />
-                    <Button onClick={fetchWord}>Search</Button>
-                </CoolForm>
-                <Display content={entry} />
-            </FlexContainer>
+            <h1>Search Italian to English</h1>
+            {/* entry search */}
+            <CoolForm onChange={handleFormChange}>
+                <InputField type="text" name="entry" onChange={(e) => setWord(e.target.value)} />
+                <Button onClick={fetchWord}>Search</Button>
+            </CoolForm>
+            <Display content={entry} />
         </PageContainer>
     );
 }
 
-export default EnglishToItalian;
+export default SearchItalianToEnglish;
