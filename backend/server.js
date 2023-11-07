@@ -1,4 +1,5 @@
-// require('dotenv').config();
+// Dependencies
+require('dotenv').config();
 const express = require('express');
 const router = require('./Controllers/router.js');
 const app = express();
@@ -6,12 +7,13 @@ const app = express();
 const cors = require('cors');
 
 // ======================================== //
+const PORT = process.env.PORT || 4001;
 // MIDDLEWARE //
 app.use(express.urlencoded({extended: true}))
 app.use(express.json());
 app.use(cors())
 app.use(router);
 
-app.listen(4001, async () => {
-    console.log('Server is listening on port 4001');
+app.listen(PORT, () => {
+    console.log(`Server is listening on port ${PORT}`);
 });
