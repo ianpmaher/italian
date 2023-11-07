@@ -40,15 +40,15 @@ const ItalianToEnglish = (props) => {
     const fetchWord = async (event) => {
         event.preventDefault();
         try {
-            // const response = await fetch(`${baseUrl}english-italian/entries/${word}`, {
-            //     method: "GET",
+            
+            // local
+            // ================================
+            // const response = await axios.get(`http://localhost:4001/italian/entry/${word}`, {
             //     headers: {
-            //         "accessKey": accessKey,
-            //         "serverName": serverName,
-            //         "searchWord": word
-            //     }
+            //         "Content-Type": "application/json",
+            //     },
             // });
-            const response = await axios.get(`http://localhost:4001/italian/entry/${word}`, {
+            const response = await axios.get(`https://ancient-river-11177-d542b39e28a6.herokuapp.com/italian/entry/${word}`, {
                 headers: {
                     "Content-Type": "application/json",
                 },

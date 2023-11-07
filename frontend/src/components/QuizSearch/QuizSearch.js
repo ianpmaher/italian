@@ -17,7 +17,14 @@ const QuizSearch = ({word}) => {
         event.preventDefault();
         handleIsTranslated();
         try {
-            const response = await axios.get(`http://localhost:4001/english/quiz/${word}`, {
+
+            // local
+            // ================================
+            // const response = await axios.get(`http://localhost:4001/english/quiz/${word}`, {
+            //     headers: {
+            //         "Content-Type": "application/json"
+            //     }            });
+            const response = await axios.get(`https://ancient-river-11177-d542b39e28a6.herokuapp.com/english/quiz/${word}`, {
                 headers: {
                     "Content-Type": "application/json"
                 }            });

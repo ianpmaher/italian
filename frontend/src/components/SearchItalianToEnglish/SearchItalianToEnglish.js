@@ -39,7 +39,14 @@ const SearchItalianToEnglish = (props) => {
             //         "searchWord": word
             //     }
             // });
-            const response = await axios.get(`http://localhost:4001/italian/search/${word}`, {
+            
+            // local
+            // ================================
+            // const response = await axios.get(`http://localhost:4001/italian/search/${word}`, {
+            //     headers: {
+            //         "Content-Type": "application/json"
+            //     }            });
+            const response = await axios.get(`https://ancient-river-11177-d542b39e28a6.herokuapp.com/italian/search/${word}`, {
                 headers: {
                     "Content-Type": "application/json"
                 }            });
