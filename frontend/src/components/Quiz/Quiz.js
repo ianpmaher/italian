@@ -42,6 +42,7 @@ const Quiz = (props) => {
     const handleGetWord = (event) => {
         event.preventDefault();
         getWord();
+        console.log(display)
     };
 
     return (

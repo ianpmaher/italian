@@ -1,7 +1,5 @@
 import { useState } from "react";
-import styled from "styled-components";
 import PropTypes from "prop-types";
-import { useTheme } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -45,7 +43,6 @@ function a11yProps(index) {
 }
 
 const Nav = (props) => {
-    const theme = useTheme();
     const [value, setValue] = useState(1);
 
     const handleChange = (event, newValue) => {
