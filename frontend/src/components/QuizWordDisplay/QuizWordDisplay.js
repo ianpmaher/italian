@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styled from "styled-components";
 import "./QuizWordDisplay.css";
 import Skeleton from "@mui/material/Skeleton";

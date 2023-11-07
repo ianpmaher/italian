@@ -22,7 +22,12 @@ const QuizSearch = ({word}) => {
                     "Content-Type": "application/json"
                 }            });
             console.log(response);
-            setEntry(response.data);
+            if (response.data === "") {
+                setEntry("No entry found");
+            }
+            else { 
+                setEntry(response.data);
+            }
         } catch (error) {
             console.log(error);
         }
