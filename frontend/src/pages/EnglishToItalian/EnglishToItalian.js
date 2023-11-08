@@ -1,9 +1,9 @@
-import { useState} from "react";
-import axios from "axios";
+// import { useState} from "react";
+// import axios from "axios";
 import styled from "styled-components";
-import Display from "../../components/Display/Display";
-import InputField from "../../components/InputField/InputField";
-import Button from "../../components/Button/Button";
+// import Display from "../../components/Display/Display";
+// import InputField from "../../components/InputField/InputField";
+// import Button from "../../components/Button/Button";
 import SearchEnglishToItalian from "../../components/SearchEnglishToItalian/SearchEnglishToItalian";
 
 const PageContainer = styled.div`
@@ -22,13 +22,13 @@ const FlexContainer = styled.div`
     margin: 0 auto;
 `
 
-const CoolForm = styled.form`
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
-    align-items: center;
-    min-width: 20rem;
-`;
+// const CoolForm = styled.form`
+//     display: flex;
+//     flex-flow: column wrap;
+//     justify-content: center;
+//     align-items: center;
+//     min-width: 20rem;
+// `;
 
 // const baseUrl = 'https://api.collinsdictionary.com/api/v1/dictionaries/';
 // const serverName = "api.collinsdictionary.com";
@@ -37,11 +37,11 @@ const CoolForm = styled.form`
 const EnglishToItalian = (props) => {
     
     // API English to Italian
-    const [word, setWord] = useState("");
-    const [entry, setEntry] = useState("");
-    const fetchWord = async (event) => {
-        event.preventDefault();
-        try {
+    // const [word, setWord] = useState("");
+    // const [entry, setEntry] = useState("");
+    // const fetchWord = async (event) => {
+    //     event.preventDefault();
+    //     try {
             // const response = await fetch(`${baseUrl}english-italian/entries/${word}`, {
             //     method: "GET",
             //     headers: {
@@ -57,21 +57,21 @@ const EnglishToItalian = (props) => {
             //     headers: {
             //         "Content-Type": "application/json"
             //     }            });
-            const response = await axios.get(`https://ancient-river-11177-d542b39e28a6.herokuapp.com/english/entry/${word}`, {
-                headers: {
-                    "Content-Type": "application/json"
-                }            });
-            console.log(response);
-            setEntry(response.data);
-        } catch (error) {
-            console.log(error);
-        }
-    }
+    //         const response = await axios.get(`https://ancient-river-11177-d542b39e28a6.herokuapp.com/english/entry/${word}`, {
+    //             headers: {
+    //                 "Content-Type": "application/json"
+    //             }            });
+    //         console.log(response);
+    //         setEntry(response.data);
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // }
 
-    const handleFormChange = (e) => {
-        setEntry(e.target.value);
-        setWord(e.target.value);
-    }
+    // const handleFormChange = (e) => {
+    //     setEntry(e.target.value);
+    //     setWord(e.target.value);
+    // }
 
     return (
         <PageContainer>
@@ -79,15 +79,15 @@ const EnglishToItalian = (props) => {
                 {/* SEARCH WORD */}
                 <SearchEnglishToItalian />
             </FlexContainer>
-            <FlexContainer>
-                {/* SEARCH ENTRY */}
+            {/* SEARCH ENTRY */}
+            {/* <FlexContainer>
                 <h1>Entry: English to Italian</h1>
                 <CoolForm onChange={handleFormChange}>
                     <InputField type="text" name="entry" onChange={(e) => setEntry(e.target.value)} />
                     <Button onClick={fetchWord}>Search</Button>
                 </CoolForm>
                 <Display content={entry} />
-            </FlexContainer>
+            </FlexContainer> */}
         </PageContainer>
     );
 }
