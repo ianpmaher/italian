@@ -65,6 +65,7 @@ const Nav = (props) => {
                         <Tab label="English to Italian" {...a11yProps(1)} />
                         <Tab label="Italian to English" {...a11yProps(2)} />
                         <Tab label="Quiz" {...a11yProps(3)} />
+                        <Tab label="Translate" {...a11yProps(4)} />
                     </Tabs>
                 </AppBar>
                 <TabPanel value={value} index={0} >
@@ -79,6 +80,9 @@ const Nav = (props) => {
                 </TabPanel>
                 <TabPanel value={value} index={3} >
                     <Quiz />
+                </TabPanel>
+                <TabPanel value={value} index={4} >
+                    Item Five
                 </TabPanel>
             </Box>
         </div>
