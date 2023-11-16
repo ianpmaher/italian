@@ -11,6 +11,8 @@
 // http://api.collinsdictionary.com/api/v1/dictionaries/english-italian/entries/dog_1
 // http://dps.api-lib.idm.fr/libraries.html#js
 
+// import collins from "collins"
+
 const Collins = require("collins");
 const serverName = "api.collinsdictionary.com";
 const accessKey = process.env.API_KEY_COLLINS_DICTIONARY;
